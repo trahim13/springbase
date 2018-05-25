@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+default-init-method="defaultInitMethod"
+default-destroy-method="defaultDestroyMethod"
+default-lazy-init="true">
+
+
+    <bean id="t1000" class="org.trahim.spring.impls.robot.ModelT1000" scope="prototype" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg value="green" type="java.lang.String" index="0"/>
+        <constructor-arg value="19" type="int" index="1"/>
+        <constructor-arg value="true" type="boolean" index="2"/>
+
+        <property name="leg" ref="leg"/>
+        <property name="head" ref="head"/>
+        <property name="hand" ref="hand"/>
+    </bean>
+
+
+    <bean id="t1000P" class="org.trahim.spring.impls.robot.ModelT1000"
+
+          p:hand-ref="hand"
+          p:leg-ref="leg"
+          p:head-ref="head"
+          p:color="RED"
+          p:year="1990"
+          p:soundEnabled="false"/>
+
+
+    <bean id="processor" class="org.trahim.spring.impls.processor.MyBeanPostProcessor">
+
+    </bean>
+
+    <bean id="hand" class="org.trahim.spring.impls.sony.SonyHand">
+    </bean>
+
+    <bean id="head" class="org.trahim.spring.impls.sony.SonyHead">
+
+    </bean>
+
+    <bean id="leg" class="org.trahim.spring.impls.sony.SonyLeg">
+
+    </bean>
+</beans>
