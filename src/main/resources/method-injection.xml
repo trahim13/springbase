@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+
+default-lazy-init="true"
+
+>
+<import resource="context2.xml"/>
+
+    <bean id="modelT1000" class="org.trahim.spring.impls.robot.ModelT1000" scope="prototype">
+        <property name="head" ref="head"/>
+        <property name="leg" ref="leg"/>
+        <property name="hand" ref="hand"/>
+        <property name="color" value="black"/>
+        <property name="soundEnabled" value="false"/>
+        <property name="year" value="2018"/>
+    </bean>
+
+
+    <bean id="robotFactory" class="org.trahim.spring.cglib.impl.T1000RobotFactory">
+        <lookup-method name="createRobot" bean="modelT1000"/>
+    </bean>
+
+
+
+
+
+
+    <bean id="actionReplacer" class="org.trahim.spring.cglib.impl.ActionReplacer"/>
+
+
+    <bean id="modelT1000R" class="org.trahim.spring.impls.robot.ModelT1000" scope="prototype">
+        <property name="head" ref="head"/>
+        <property name="leg" ref="leg"/>
+        <property name="hand" ref="hand"/>
+        <property name="color" value="black"/>
+        <property name="soundEnabled" value="false"/>
+        <property name="year" value="2018"/>
+        <replaced-method name="action" replacer="actionReplacer"/>
+    </bean>
+
+
+
+</beans>

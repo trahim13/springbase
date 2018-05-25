@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+    <import resource="method-injection.xml"/>
+
+
+    <bean id="robotT1000Pool" class="org.trahim.spring.collections.impl.RobotT1000Pool">
+        <property name="robots">
+            <list>
+                <ref bean="modelT1000"/>
+                <ref bean="modelT1000R"/>
+                <ref bean="t1000"/>
+            </list>
+        </property>
+
+    </bean>
+
+
+    <bean id="mapPool" class="org.trahim.spring.collections.impl.RobotMapPool">
+        <constructor-arg name="map">
+            <map>
+                <entry key="1" value-ref="t1000"/>
+                <entry key="2" value-ref="modelT1000R"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
