@@ -29,6 +29,7 @@
             <version>5.0.6.RELEASE</version>
         </dependency>
 
+<!--annotations-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

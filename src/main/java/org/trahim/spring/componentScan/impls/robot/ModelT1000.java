@@ -1,29 +1,42 @@
-package org.trahim.spring.impls.robot;
+package org.trahim.spring.componentScan.impls.robot;
 
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.trahim.spring.interfaces.Hand;
-import org.trahim.spring.interfaces.Head;
-import org.trahim.spring.interfaces.Leg;
-import org.trahim.spring.interfaces.Robot;
-
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.trahim.spring.componentScan.interfaces.Hand;
+import org.trahim.spring.componentScan.interfaces.Head;
+import org.trahim.spring.componentScan.interfaces.Leg;
+import org.trahim.spring.componentScan.interfaces.Robot;
+@Component
 public class ModelT1000 implements Robot, InitializingBean, DisposableBean {
 
     @Autowired
-    @Qualifier("toshibaHand")
     private Hand hand;
 
     @Autowired
-    @Qualifier("toshibaLeg")
     private Leg leg;
 
     @Autowired
-    @Qualifier("toshibaHead")
     private Head head;
 
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public ModelT1000 model1() {
+        return new ModelT1000();
+    }
+
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public ModelT1000 model2() {
+        return new ModelT1000("WHITE", 2018, true);
+    }
     private String color;
     private int year;
     private boolean soundEnabled;

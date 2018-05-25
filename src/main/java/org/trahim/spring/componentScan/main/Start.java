@@ -1,9 +1,8 @@
-package org.trahim.spring.main;
+package org.trahim.spring.componentScan.main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.trahim.spring.collections.impl.RobotMapPool;
-import org.trahim.spring.interfaces.Robot;
+import org.trahim.spring.componentScan.interfaces.Robot;
 
 
 public class Start {
@@ -54,22 +53,8 @@ public class Start {
 
 
 //AUTOWIRE ANNOTATION
-//        ApplicationContext context = new ClassPathXmlApplicationContext("autowire-annotation.xml");
-//        Robot robotAutoAnnotation = (Robot) context.getBean("robotAutoAnnotation");
-//        robotAutoAnnotation.action();
-        //
-
- //COMPONENT SCAN
-        ApplicationContext context = new ClassPathXmlApplicationContext("component-scan.xml");
-        org.trahim.spring.componentScan.interfaces.Robot robot = (org.trahim.spring.componentScan.interfaces.Robot) context.getBean("modelT1000");
-        robot.action();
-
-
-
-        org.trahim.spring.componentScan.interfaces.Robot model1 = (org.trahim.spring.componentScan.interfaces.Robot) context.getBean("model1");
-        org.trahim.spring.componentScan.interfaces.Robot model2 = (org.trahim.spring.componentScan.interfaces.Robot) context.getBean("model2");
-
-        model1.action();
-        model2.action();
+        ApplicationContext context = new ClassPathXmlApplicationContext("autowire-annotation.xml");
+        Robot robotAutoAnnotation = (Robot) context.getBean("robotAutoAnnotation");
+        robotAutoAnnotation.action();
     }
 }
