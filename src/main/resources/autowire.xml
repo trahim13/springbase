@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+default-lazy-init="true">
+
+
+    <bean id="hand" class="org.trahim.spring.impls.sony.SonyHand"/>
+
+    <bean id="head" class="org.trahim.spring.impls.sony.SonyHead"/>
+
+    <bean id="leg" class="org.trahim.spring.impls.sony.SonyLeg"/>
+
+
+    <bean id="robotAuto" class="org.trahim.spring.impls.robot.ModelT1000" autowire="byType"/>
+
+
+</beans>

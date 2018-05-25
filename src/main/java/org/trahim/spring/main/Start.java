@@ -39,12 +39,17 @@ public class Start {
 //		robot.action();
 //COLLECTIONS
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("collections.xml");
-//		RobotT1000Pool robotT1000Pool = (RobotT1000Pool) context.getBean("robotT1000Pool");
-//		robotT1000Pool.action();
+//        ApplicationContext context = new ClassPathXmlApplicationContext("collections.xml");
+////		RobotT1000Pool robotT1000Pool = (RobotT1000Pool) context.getBean("robotT1000Pool");
+////		robotT1000Pool.action();
+//
+//        RobotMapPool mapPool = (RobotMapPool) context.getBean("mapPool");
+//        Robot robot = mapPool.getMap().get("1");
+//        robot.action();
 
-        RobotMapPool mapPool = (RobotMapPool) context.getBean("mapPool");
-        Robot robot = mapPool.getMap().get("1");
-        robot.action();
+//AUTOWIRE
+        ApplicationContext context = new ClassPathXmlApplicationContext("autowire.xml");
+        Robot robotAuto = (Robot) context.getBean("robotAuto");
+        robotAuto.action();
     }
 }
